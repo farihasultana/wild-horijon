@@ -1,0 +1,2 @@
+### Test GET endpoint
+GET http://localhost:8000/api/country/japan
