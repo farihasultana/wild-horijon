@@ -2,7 +2,7 @@ import http from 'node:http'
 import { getDataFromDB } from './database.js'
 import { senJSONresponse } from './utility/sentJsonResponse.js'
 import { getDataByLocation } from './utility/getDataByPathParams.js'
-
+import { getDtaByQueryParams} from './utility/getDtaByQueryParams.js'
  
 
 const PORT = 8000
@@ -19,9 +19,9 @@ const server = http.createServer(async(req, res)=>{
 
     if(urlObj.pathname  === '/api' && req.method === 'GET'){
 
-        let filteredDestinations = destinations
+        let filteredData = getDtaByQueryParams(destinations, queryObj)
 
-        senJSONresponse(res, 200, filteredDestinations)
+        senJSONresponse(res, 200, filteredData)
 
         
     }
